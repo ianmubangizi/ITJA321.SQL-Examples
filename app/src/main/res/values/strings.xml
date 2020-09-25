@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SQL Examples</string>
+    <string name="app_db_schema">
+        create table if not exists users(
+			id int,
+			name varchar,
+			email varchar,
+			password varchar
+        );
+		create table if not exists messages
+		(
+			id int
+				constraint messages_pk
+					primary key,
+			sent_to int
+				constraint receiver_fk
+					references users (id),
+			send_by int
+				constraint sender_fk
+					references users (id),
+			message text
+		);
+    </string>
+	<string-array name="app_db_tables">
+		<item>users</item>
+		<item>messages</item>
+	</string-array>
+</resources>
