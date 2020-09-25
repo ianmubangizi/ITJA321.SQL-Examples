@@ -17,7 +17,7 @@ public class SqlDbOpenHelper extends SQLiteOpenHelper {
     public SqlDbOpenHelper(Context context, String name) {
         super(context, name, null, 1);
         String[] strings = context.getResources().getStringArray(R.array.app_db_tables);
-        this.tables = (ArrayList<String>) Arrays.asList(strings);
+        this.tables = new ArrayList<>(Arrays.asList(strings));
         this.schema = context.getString(R.string.app_db_schema);
     }
 
