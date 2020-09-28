@@ -1,5 +1,7 @@
 package com.mubangizi.sqlexamples.data.model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class User {
     private int id;
     private String name, email, password;
@@ -41,5 +43,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

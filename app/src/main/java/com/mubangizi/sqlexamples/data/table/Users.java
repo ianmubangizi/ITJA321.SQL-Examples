@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.mubangizi.sqlexamples.data.Table;
@@ -19,7 +20,7 @@ public class Users extends Table {
         super(database, "users", "id", "name", "email", "password");
     }
 
-    public ArrayList<User> getAll(String where, String... args) {
+    public ArrayList<User> getAll(@Nullable String where, String... args) {
         ArrayList<User> users = new ArrayList<>();
         try (Cursor result = get(where, args)) {
             do {
@@ -45,12 +46,12 @@ public class Users extends Table {
         return result.stream().findFirst().filter((user -> user.getId() == id)).get();
     }
 
-    public void save(User user) {
+    public long save(User user) {
         ContentValues content = new ContentValues();
         content.put("id", user.getId());
-        content.put("name", user.getId());
-        content.put("email", user.getId());
-        content.put("password", user.getId());
-        insert(content);
+        content.put("name", user.getName());
+        content.put("email", user.getEmail());
+        content.put("password", user.getPassword());
+        return insert(content);
     }
 }
