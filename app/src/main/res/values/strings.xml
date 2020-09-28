@@ -21,6 +21,7 @@
 			message text
 		);
     </string>
+	<string name="user_list">User List</string>
 	<string-array name="app_db_tables">
 		<item>users</item>
 		<item>messages</item>
