@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
             TextView name_text = findViewById(R.id.person_name);
             TextView email_text = findViewById(R.id.person_email);
 
+            save.setOnClickListener((view) -> {
+                double magic_number = 125.175 / 5 * 8 / 5;
+                int id = (int) (Math.random() * magic_number);
 
-            save.setOnClickListener((it) -> {
                 String name = name_text.getText().toString();
                 String email = email_text.getText().toString();
-                long result = users_table.save(new User((int) (Math.random() * 125.175 / 5 * 8), name, email, ""));
+
+                User user = new User(id, name, email, "");
+                long result = users_table.save(user);
                 if (result > 0) {
                     Toast.makeText(getApplicationContext(),
                             "Add You Successfully",
